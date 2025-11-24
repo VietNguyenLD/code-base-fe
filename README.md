@@ -1,29 +1,24 @@
-# Social App
+# Manegyclip App
 
-Ứng dụng mạng xã hội khởi tạo bằng Next.js (App Router) với Redux Toolkit để quản lý state, Axios để gọi API và Tailwind CSS v4 để giao diện.
+Social network starter built with Next.js (App Router), Redux Toolkit for state, Axios for API calls, and Tailwind CSS v4 for styling.
 
-## Kiến trúc nhanh
-- App Router với 2 nhóm route: `(public)` cho trang `login`, `(protected)` áp dụng `getCurrentUser` để redirect nếu chưa đăng nhập (dự kiến cho `feed`).
-- State toàn cục trong `src/store` (Redux Toolkit + React-Redux hooks). Token được lưu vào `localStorage`.
-- API client `src/shared/lib/axiosClient.ts` thêm `Authorization: Bearer` nếu có token và đọc `baseURL` từ biến môi trường.
-- Domain tách riêng: `entities` (kiểu dữ liệu gốc), `features` (login, feed), `shared` (tiện ích dùng chung).
+## Quick architecture
+- App Router with two route groups: `(public)` for `login`, `(protected)` uses `getCurrentUser` to redirect if unauthenticated (intended for `feed`).
+- Global state in `src/store` (Redux Toolkit + React-Redux hooks). Token stored in `localStorage`.
+- API client `src/shared/lib/axiosClient.ts` adds `Authorization: Bearer` when a token exists and reads `baseURL` from environment variables.
+- Domain separation: `entities` (core types), `features` (auth, feed, post), `shared` (utilities).
 
-## Thư mục chính
-- `src/app`: layout gốc, trang mặc định, nhóm route `(public)/(protected)`.
-- `src/features/auth`: form đăng nhập, gọi `loginApi`, định nghĩa kiểu `LoginPayload`/`LoginResponse`.
-- `src/features/feed`: render `FeedList` và selectors tầng model.
-- `src/features/post`: API + model (types/mappers) cho bài viết (feed/create/like).
+## Key folders
+- `src/app`: root layout, default page, `(public)/(protected)` route groups.
+- `src/features/auth`: login form, `loginApi`, types `LoginPayload`/`LoginResponse`.
+- `src/features/feed`: render `FeedList` and model-level selectors.
+- `src/features/post`: API + model (types/mappers) for posts (feed/create/like).
 - `src/shared/lib`: `axiosClient`, `authGuard`.
-- `src/store`: cấu hình Redux store, providers và các slice `auth`, `posts`.
+- `src/store`: Redux store config, providers, slices `auth`, `posts`.
 
-## Sơ đồ cấu trúc dự án
+## Project structure diagram
 ```
 social-app/
-├─ README.md
-├─ package.json
-├─ tsconfig.json
-├─ eslint.config.mjs
-├─ postcss.config.mjs
 ├─ src/
 │  ├─ app/
 │  │  ├─ (public)/login/page.tsx
@@ -52,37 +47,42 @@ social-app/
 │     ├─ Providers.tsx
 │     ├─ hooks.ts
 │     └─ index.ts
-└─ public/
-   ├─ favicon.ico
-   └─ assets khác
+├─ public/
+│   ├─ favicon.ico
+│   └─ other assets
+├─ README.md
+├─ package.json
+├─ tsconfig.json
+├─ eslint.config.mjs
+└─ postcss.config.mjs
 ```
 
-## Cần chuẩn bị
-- Node.js 20+ và npm/yarn/pnpm.
-- API backend có các endpoint:
-  - `POST /auth/login` trả `{ user, accessToken }`.
-  - `GET /posts/feed` trả danh sách `Post`.
-- Biến môi trường: tạo file `.env.local` và set `NEXT_PUBLIC_API_BASE_URL` (mặc định rơi về `http://localhost:4000/api`).
+## Requirements
+- Node.js 20+ with npm/yarn/pnpm.
+- Backend API endpoints:
+  - `POST /auth/login` returns `{ user, accessToken }`.
+  - `GET /posts/feed` returns a list of `Post`.
+- Environment variable: create `.env.local` and set `NEXT_PUBLIC_API_BASE_URL` (defaults to `http://localhost:4000/api`).
 
-## Chạy dự án
+## Run the project
 ```bash
-npm install          # hoặc yarn / pnpm
-npm run dev          # chạy ở http://localhost:3000
+npm install          # or yarn / pnpm
+npm run dev          # http://localhost:3000
 
-npm run build        # build production
-npm start            # chạy build
+npm run build        # production build
+npm start            # run built app
 npm run lint         # eslint
-npm run format       # prettier cho js/json/md/css
+npm run format       # prettier for js/json/md/css
 ```
 
-## Luồng chính
-- Đăng nhập: `src/features/auth/ui/LoginForm.tsx` dispatch `login` (async thunk). Khi thành công lưu `accessToken` vào localStorage và Redux store.
-- Bảo vệ route: `src/app/(protected)/layout.tsx` gọi `getCurrentUser` (đọc cookie `accessToken`, TODO: verify token/gọi API). Nếu không có token, redirect `/login`.
-- Feed: `src/features/feed/ui/FeedList.tsx` dispatch `fetchFeed` để lấy danh sách bài viết, hiển thị trạng thái loading/error và bài viết (có dữ liệu giả fallback khi API lỗi).
-- Post model/API: `src/features/post/model` định nghĩa `PostApiResponse`, mapper `mapPostFromApi`; `src/features/post/api/post.ts` gọi backend `feed/create/like` và map về domain `Post`.
+## Main flows
+- Login: `src/features/auth/ui/LoginForm.tsx` dispatches `login` (async thunk). On success, stores `accessToken` in localStorage and Redux store.
+- Route guard: `src/app/(protected)/layout.tsx` calls `getCurrentUser` (reads `accessToken` cookie; TODO: verify token/call API). If no token, redirects to `/login`.
+- Feed: `src/features/feed/ui/FeedList.tsx` dispatches `fetchFeed` to load posts, shows loading/error, and renders posts (with fallback sample data when the API fails).
+- Post model/API: `src/features/post/model` defines `PostApiResponse`, mapper `mapPostFromApi`; `src/features/post/api/post.ts` hits backend feed/create/like and maps to domain `Post`.
 
-## Phát triển tiếp theo (gợi ý)
-- Hoàn thiện route `/feed` trong nhóm `(protected)` và gắn `FeedPage`.
-- Bổ sung xác thực thực tế cho `getCurrentUser` (gọi API verify/refresh token, đồng bộ cookie/localStorage).
-- Thêm điều hướng sidebar/header trong layout bảo vệ, logic logout và hiển thị avatar.
-- Viết test hoặc mock API cho `authSlice`/`postSlice`.
+## Next steps (suggestions)
+- Complete `/feed` route in the `(protected)` group and attach `FeedPage`.
+- Implement real auth for `getCurrentUser` (verify/refresh token, sync cookie/localStorage).
+- Add sidebar/header navigation in the protected layout, logout logic, avatar display.
+- Add tests or API mocks for `authSlice`/`postSlice`.
