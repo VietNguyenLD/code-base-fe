@@ -16,6 +16,47 @@
 - `src/shared/lib`: `axiosClient`, `authGuard`.
 - `src/store`: cấu hình Redux store, providers và các slice `auth`, `posts`.
 
+## Sơ đồ cấu trúc dự án
+```
+social-app/
+├─ README.md
+├─ package.json
+├─ tsconfig.json
+├─ eslint.config.mjs
+├─ postcss.config.mjs
+├─ src/
+│  ├─ app/
+│  │  ├─ (public)/login/page.tsx
+│  │  ├─ (protected)/layout.tsx
+│  │  ├─ globals.css
+│  │  ├─ layout.tsx
+│  │  └─ page.tsx
+│  ├─ entities/
+│  │  ├─ post/model/post.ts
+│  │  └─ user/model/types.ts
+│  ├─ features/
+│  │  ├─ auth/
+│  │  │  ├─ api/login.ts
+│  │  │  ├─ model/types.ts
+│  │  │  └─ ui/LoginForm.tsx
+│  │  ├─ feed/
+│  │  │  ├─ model/{index.ts,selectors.ts,types.ts}
+│  │  │  └─ ui/FeedList.tsx
+│  │  └─ post/
+│  │     ├─ api/post.ts
+│  │     └─ model/{mappers.ts,types.ts}
+│  ├─ shared/
+│  │  └─ lib/{authGuard.ts,axiosClient.ts}
+│  └─ store/
+│     ├─ slices/{authSlice.ts,postSlice.ts}
+│     ├─ Providers.tsx
+│     ├─ hooks.ts
+│     └─ index.ts
+└─ public/
+   ├─ favicon.ico
+   └─ assets khác
+```
+
 ## Cần chuẩn bị
 - Node.js 20+ và npm/yarn/pnpm.
 - API backend có các endpoint:
