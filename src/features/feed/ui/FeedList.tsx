@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { fetchFeed } from "@/store/slices/postSlice";
-import { PostCard } from "@/features/feed/ui/PostCard";
 import { selectFeedState } from "@/features/feed/model";
+import { PostCard } from "@/features/feed/ui/PostCard";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { fetchFeed } from "@/store/slices/post/thunk";
 
 export function FeedList() {
   const dispatch = useAppDispatch();

@@ -1,25 +1,8 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { loginApi } from "@/features/auth/api/login";
-import type { AuthState, LoginPayload, LoginResponse } from "@/features/auth/model/types";
-
-const initialState: AuthState = {
-  user: null,
-  accessToken: null,
-  loading: false,
-  error: null,
-};
-
-export const login = createAsyncThunk<LoginResponse, LoginPayload, { rejectValue: string }>(
-  "auth/login",
-  async (payload, thunkAPI) => {
-    try {
-      const res = await loginApi(payload);
-      return res;
-    } catch (e: any) {
-      return thunkAPI.rejectWithValue(e?.response?.data?.message ?? "Login failed");
-    }
-  }
-);
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import type { AuthState } from "@/features/auth/model/types";
+import { initialState } from "./initial-state";
+import { login } from "./thunk";
 
 const authSlice = createSlice({
   name: "auth",

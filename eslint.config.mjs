@@ -5,9 +5,7 @@ import tseslint from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
 
 export default defineConfig([
-  // Base config của Next.js (tương đương "next/core-web-vitals")
   ...next,
-
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
     languageOptions: {
@@ -23,6 +21,23 @@ export default defineConfig([
     rules: {
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
+
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/consistent-type-imports": "error",
+
+      "import/order": [
+        "error",
+        {
+          groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
+          alphabetize: { order: "asc", caseInsensitive: true },
+        },
+      ],
+
+      "no-console": "warn",
+      "no-debugger": "error",
+      "prefer-const": "error",
+      eqeqeq: ["error", "always"],
     },
   },
 

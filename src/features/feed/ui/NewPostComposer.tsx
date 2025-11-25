@@ -1,10 +1,11 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { createPost } from "@/store/slices/postSlice";
+import type { FormEvent } from "react";
+import { useState } from "react";
 import { Button } from "@/shared/ui/Button";
 import { cn } from "@/shared/utils/classnames";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { createPost } from "@/store/slices/post/thunk";
 
 export function NewPostComposer() {
   const dispatch = useAppDispatch();

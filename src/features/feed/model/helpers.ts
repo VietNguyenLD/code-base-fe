@@ -1,5 +1,5 @@
-import type { FeedFilters } from "./types";
 import type { Post } from "@/entities/post/model/post";
+import type { FeedFilters } from "./types";
 
 export function sortPosts(posts: Post[], sortBy: FeedFilters["sortBy"]): Post[] {
   const cloned = [...posts];

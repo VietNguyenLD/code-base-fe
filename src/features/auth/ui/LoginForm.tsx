@@ -1,8 +1,9 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import type { FormEvent } from "react";
+import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { login } from "@/store/slices/authSlice";
+import { login } from "@/store/slices/auth/thunk";
 
 export function LoginForm() {
   const dispatch = useAppDispatch();

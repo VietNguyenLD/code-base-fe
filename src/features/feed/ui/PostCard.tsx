@@ -1,11 +1,10 @@
 "use client";
 
-import type { Post } from "../../../entities/post/model/post";
-
 import { cn } from "@/shared/utils/classnames";
 import { timeAgo } from "@/shared/utils/date";
 import { useAppDispatch } from "@/store/hooks";
-import { toggleLikePost } from "@/store/slices/postSlice";
+import { toggleLikePost } from "@/store/slices/post";
+import type { Post } from "../../../entities/post/model/post";
 
 export function PostCard({ post }: { post: Post }) {
   const dispatch = useAppDispatch();

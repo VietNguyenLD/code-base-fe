@@ -1,7 +1,7 @@
-import axiosClient from "@/shared/lib/axiosClient";
-import type { Post } from "@/entities/post/model/post";
 import type { PostApiResponse } from "@/entities/post/model/mappers";
 import { mapPostFromApi } from "@/entities/post/model/mappers";
+import type { Post } from "@/entities/post/model/post";
+import axiosClient from "@/shared/lib/axiosClient";
 
 export async function getFeedApi(): Promise<Post[]> {
   const res = await axiosClient.get<PostApiResponse[]>("/posts/feed");

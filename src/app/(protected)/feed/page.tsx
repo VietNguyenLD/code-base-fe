@@ -1,5 +1,5 @@
-import { NewPostComposer } from "@/features/feed/ui/NewPostComposer";
 import { FeedList } from "@/features/feed/ui/FeedList";
+import { NewPostComposer } from "@/features/feed/ui/NewPostComposer";
 
 export default function FeedPage() {
   return (

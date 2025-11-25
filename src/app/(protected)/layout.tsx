@@ -1,14 +1,14 @@
-import { ReactNode } from "react";
 import { redirect } from "next/navigation";
-import { getCurrentUser } from "@/shared/lib/authGuard";
+import type { ReactNode } from "react";
 import { ROUTES } from "@/shared/config";
+import { getCurrentUser } from "@/shared/lib/authGuard";
 
 export default async function ProtectedLayout({ children }: { children: ReactNode }) {
   const user = await getCurrentUser();
 
-  // if (!user) {
-  //   redirect(ROUTES.PUBLIC.LOGIN);
-  // }
+  if (!user) {
+    redirect(ROUTES.PUBLIC.LOGIN);
+  }
 
   return (
     <div className="flex min-h-screen">

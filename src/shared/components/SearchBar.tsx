@@ -1,7 +1,7 @@
 "use client";
 
-import { Input } from "@/shared/ui/Input";
 import { useState } from "react";
+import { Input } from "@/shared/ui/Input";
 
 interface SearchBarProps {
   onChange: (value: string) => void;
