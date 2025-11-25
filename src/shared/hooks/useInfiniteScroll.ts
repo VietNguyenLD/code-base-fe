@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 
 interface UseInfiniteScrollProps {
-  hasMore: boolean;                // còn data để load nữa không
-  isLoading: boolean;              // đang load (tránh gọi chồng)
-  onLoadMore: () => void;          // hàm gọi khi cần load thêm
-  rootMargin?: string;             // optional: khoảng cách trigger
+  hasMore: boolean; // còn data để load nữa không
+  isLoading: boolean; // đang load (tránh gọi chồng)
+  onLoadMore: () => void; // hàm gọi khi cần load thêm
+  rootMargin?: string; // optional: khoảng cách trigger
 }
 
 export function useInfiniteScroll<T extends HTMLElement>({

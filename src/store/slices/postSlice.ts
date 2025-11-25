@@ -1,10 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import type { Post, PostId } from "@/entities/post/model/post";
-import {
-  getFeedApi,
-  createPostApi,
-  toggleLikePostApi,
-} from "@/features/feed/api/post";
+import { getFeedApi, createPostApi, toggleLikePostApi } from "@/features/feed/api/post";
 
 interface PostState {
   list: Post[];

@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fetchFeed } from "@/store/slices/postSlice";
-import { PostCard } from "@/entities/post/ui/PostCard";
+import { PostCard } from "@/features/feed/ui/PostCard";
 import { selectFeedState } from "@/features/feed/model";
 
 export function FeedList() {

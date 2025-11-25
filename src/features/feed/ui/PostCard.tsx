@@ -1,6 +1,6 @@
 "use client";
 
-import type { Post } from "../model/post";
+import type { Post } from "../../../entities/post/model/post";
 
 import { cn } from "@/shared/utils/classnames";
 import { timeAgo } from "@/shared/utils/date";
@@ -18,9 +18,7 @@ export function PostCard({ post }: { post: Post }) {
     <article className="rounded-xl bg-white p-4 shadow-sm">
       <div className="mb-1 text-xs text-gray-500 flex justify-between">
         <span>{timeAgo(post.createdAt)}</span>
-        <span className="text-gray-400 text-[11px]">
-          {post.commentsCount} bình luận
-        </span>
+        <span className="text-gray-400 text-[11px]">{post.commentsCount} bình luận</span>
       </div>
 
       <p className="text-gray-900 text-sm whitespace-pre-line">{post.content}</p>

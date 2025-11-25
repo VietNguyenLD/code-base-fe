@@ -23,10 +23,7 @@ export function NewPostComposer() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="rounded-xl bg-white p-4 shadow-sm flex flex-col gap-3"
-    >
+    <form onSubmit={handleSubmit} className="rounded-xl bg-white p-4 shadow-sm flex flex-col gap-3">
       <textarea
         rows={3}
         value={content}

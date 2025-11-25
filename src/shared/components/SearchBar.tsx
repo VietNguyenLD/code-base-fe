@@ -3,12 +3,12 @@
 import { Input } from "@/shared/ui/Input";
 import { useState } from "react";
 
-interface SearchBarProps { 
-    onChange: (value: string) => void
-    className?: string
+interface SearchBarProps {
+  onChange: (value: string) => void;
+  className?: string;
 }
 
-export function SearchBar({ onChange, className }:SearchBarProps ) {
+export function SearchBar({ onChange, className }: SearchBarProps) {
   const [value, setValue] = useState("");
 
   const handleChange = (v: string) => {

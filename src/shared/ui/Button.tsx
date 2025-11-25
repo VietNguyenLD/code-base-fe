@@ -6,12 +6,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "outline" | "danger";
 }
 
-export function Button({
-  children,
-  className,
-  variant = "primary",
-  ...props
-}: ButtonProps) {
+export function Button({ children, className, variant = "primary", ...props }: ButtonProps) {
   const base = "px-4 py-2 rounded-lg text-sm font-medium transition";
 
   const variants = {

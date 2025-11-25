@@ -8,7 +8,6 @@ export default defineConfig([
   // Base config của Next.js (tương đương "next/core-web-vitals")
   ...next,
 
-  // TypeScript + React + Tailwind cho file code chính
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
     languageOptions: {
@@ -22,16 +21,11 @@ export default defineConfig([
       "@typescript-eslint": tseslint,
     },
     rules: {
-      // TS rules
-      // "@typescript-eslint/no-explicit-any": "off",
-
-      // React hooks
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
     },
   },
 
-  // Ignore thư mục build
   {
     ignores: [".next/**", "out/**", "build/**", "next-env.d.ts"],
   },

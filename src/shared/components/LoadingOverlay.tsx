@@ -1,5 +1,5 @@
 interface LoadingOverlayProps {
-    show?: boolean
+  show?: boolean;
 }
 
 export function LoadingOverlay({ show = false }: LoadingOverlayProps) {

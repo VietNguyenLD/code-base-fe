@@ -14,7 +14,7 @@ export default async function ProtectedLayout({ children }: { children: ReactNod
     <div className="flex min-h-screen">
       <aside className="hidden w-64 border-r bg-white md:block">
         <div className="p-4 font-bold">Social App</div>
-        {/* TODO: nav items */}        
+        {/* TODO: nav items */}
       </aside>
 
       <div className="flex flex-1 flex-col">

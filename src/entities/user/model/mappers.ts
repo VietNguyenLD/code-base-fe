@@ -1,6 +1,5 @@
 import { User } from "./user";
 
-
 export interface UserApiResponse {
   id: string;
   username: string;
