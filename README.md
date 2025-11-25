@@ -4,6 +4,10 @@ References: https://dev.to/m_midas/feature-sliced-design-the-best-frontend-archi
 
 Social network starter built with Next.js (App Router), Redux Toolkit for state, Axios for API calls, and Tailwind CSS v4 for styling.
 
+## Documentation
+
+- Project structure (Vietnamese): docs/structure.md
+
 ## Quick architecture
 
 - App Router with two route groups: `(public)` for `login`, `(protected)` uses `getCurrentUser` to redirect if unauthenticated (intended for `feed`).
