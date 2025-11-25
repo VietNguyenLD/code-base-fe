@@ -1,3 +1,5 @@
+References: https://dev.to/m_midas/feature-sliced-design-the-best-frontend-architecture-4noj
+
 # Manegyclip App
 
 Social network starter built with Next.js (App Router), Redux Toolkit for state, Axios for API calls, and Tailwind CSS v4 for styling.
