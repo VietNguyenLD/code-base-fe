@@ -17,5 +17,10 @@
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "chat.mcp.serverSampling": {
+    "social-app/.vscode/mcp.json: figma": {
+      "allowedModels": []
+    }
   }
 }
